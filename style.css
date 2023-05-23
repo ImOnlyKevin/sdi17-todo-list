@@ -19,6 +19,11 @@ html {
     margin-right: 25em;
 }
 
+.history {
+    margin-left: 25em;
+    margin-right: 25em;
+}
+
 .checkbox {
     border-style: none;
     border-radius: 5px;
@@ -28,7 +33,11 @@ html {
     text-align: start;
 }
 
-ul {
+#historyCheck {
+    justify-content: right;
+}
+
+.ul {
     list-style-type: none;
     display: grid;
     grid-template-columns: 100%;
@@ -40,8 +49,25 @@ ul {
     
 }
 
-li {
+.li {
     border-style: solid;
     margin: 0.5em 0.5em 0.5em 0.5em;
     text-align: left;
+}
+
+.historyEntry {
+    display: grid;
+    grid-template-columns: 100%;
+    background-color: #B5E5CF;
+    text-align: start;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 1em;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, #FCB5AC, #B99095);
+}
+
+.removed {
+    transition: opacity 1.2s;
+    opacity: 0;
 }
