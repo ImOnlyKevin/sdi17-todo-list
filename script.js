@@ -4,11 +4,13 @@ document.addEventListener("DOMContentLoaded", function(event){
 
 
     let button = document.getElementById('new-task-btn').addEventListener('click', () => { 
-        // select the text in the box
+        // Select the text in the box
         let task = document.querySelector('#buttonText').value
-        let current_tasks = document.querySelectorAll('li')
-        // current_tasks[0].innerText
 
+        // Return an array of all list elements
+        let current_tasks = document.querySelectorAll('li')
+
+        // Check every list element and make sure that it is not a duplicate
         for (let index in current_tasks) {
             if (current_tasks[index].innerText == undefined){
                 continue
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function(event){
             }
         }
 
+        // If a blank task was submitted, raise alert. Else add task to list
         if (task == '') {
             window.alert('Please input a task')
         }
@@ -36,20 +39,21 @@ document.addEventListener("DOMContentLoaded", function(event){
             ul.appendChild(li)
         }
 
+        // Handle completing tasks
         document.querySelectorAll('#checkbox').forEach(function(checkbox) {
+            // On checkbox select
             checkbox.addEventListener('change', () => {
-                // enabledSettings = 
-                    // Array.from(complete) // Convert checkboxes to an array to use filter and map.
-                    // .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
-                    // .map(i => i.value) // Use Array.map to extract only the checkbox values from the array of objects.
-                
-                // console.log(checkbox.checked)
+
+                // If the checkbox is selected
                 if (checkbox.checked == true) {
-                    // console.log(checkbox.parentNode)
+                    // Add the "removed" class to enable CSS transition for smooth deletion
                     checkbox.parentNode.classList.add("removed");
+
+                    // Once the transition from "removed" ends, continue with deleting the li element
                     checkbox.parentNode.addEventListener("transitionend", () => {
+                        // Push to history for history log
                         history.push(document.querySelector('.removed').innerText.trim())
-                        document.querySelector('.removed').remove()
+                        document.querySelector('.removed').remove() // Remove the element that was tagged to remove
 
                         // if any more checkbox li elements exist, re-assign their ID to their child index
                         if (document.querySelectorAll('.checkbox')){
@@ -71,8 +75,11 @@ document.addEventListener("DOMContentLoaded", function(event){
         
     }) 
 
+    // Handles history display
     let showHistory = document.querySelector('#historyCheck')
+    // On checkbox change, display/hide history
     showHistory.addEventListener('change', () => {
+        // If checkbox is checked, create and display history
         if (showHistory.checked) {
             for (let index in history) {
                 const new_el = document.createElement('p')
@@ -85,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 
             }
         }
+        // If checkbox is not checked, check for history entries and delete them
         else {
             if (document.querySelectorAll('#historyEntry')) {
                 let remove_history = document.querySelectorAll('#historyEntry')

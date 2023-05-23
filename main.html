@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- link css files -->
     <link rel="stylesheet" href="./style.css">
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <!-- Main Container for styling -->
     <div class="container">
+
+        <!-- Header -->
         <header class="header">
             <h1 id="mainTitle">To-Do List</h1>
         </header>
 
+        <!-- Main section for the ToDo list -->
         <section class="todo">
-            <!-- <form action="submit" class="form"> -->
                 <div class="button">
                     <input type="button" id="new-task-btn" value="New Task" >
                     <input type="text" class="newTask" placeholder="Description..."  id="buttonText">
                 </div>
-            <!-- </form> -->
+
+            <!--Unordered List placeholder for ToDo tasks to be appended to-->
             <ul id="list" class="ul">
-                <!-- <li class="checkbox">
-                    <input type="checkbox" id="checkbox">
-                    <label for="task">Default</label>
-                </li>
-                <li class="checkbox">
-                    <input type="checkbox" id="checkbox">
-                    <label for="task">Default</label>
-                </li> -->
             </ul>
         </section>
 
+        <!-- Main section for the histroy display -->
         <section class="history">
             <div>
                 <input type="checkbox" id="historyCheck" class="historyCheck">
                 <label for="historyCheck" class="historyCheck">Show Completed Tasks</label>
             </div>
         </section>
+
     </div>
     
+    <!-- Import js scripts -->
     <script src="./script.js"></script>
 </body>
 </html>
